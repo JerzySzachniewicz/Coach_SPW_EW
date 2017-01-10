@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using WebApplication2.Models;
+using WebApplication4.Models;
 
-namespace WebApplication2.Controllers
+namespace WebApplication4.Controllers
 {
     [Authorize]
     public class ManageController : Controller

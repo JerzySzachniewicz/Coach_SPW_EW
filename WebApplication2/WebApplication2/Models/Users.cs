@@ -15,20 +15,25 @@ namespace WebApplication2.Models
             Users1 = new HashSet<Users>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int UsserId { get; set; }
 
         [StringLength(20)]
+        [Required(ErrorMessage = "Nick is nessesery!")]
         public string Nick { get; set; }
 
         [StringLength(50)]
+        [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "Email is nessesery!")]
         public string Email { get; set; }
 
         [StringLength(50)]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Password is nessesery!")]
         public string Password { get; set; }
-
-        [Column(TypeName = "date")]
+        
+        [DataType(DataType.Date)]
         public DateTime? DateOfBirth { get; set; }
 
         public bool? isTrainer { get; set; }

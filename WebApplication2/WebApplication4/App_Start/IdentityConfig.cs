@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using WebApplication2.Models;
+using WebApplication4.Models;
 
-namespace WebApplication2
+namespace WebApplication4
 {
     public class EmailService : IIdentityMessageService
     {
