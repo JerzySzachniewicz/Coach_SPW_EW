@@ -26,7 +26,6 @@ namespace WebApplication2.Controllers
                 {
                     dbContext.Users.Add(userAccount);
                     userAccount.isTrainer = false;
-                    userAccount.UsserId++;
                     dbContext.SaveChanges();
                 }
             }
@@ -51,7 +50,7 @@ namespace WebApplication2.Controllers
                     Session["UserID"] = usr.UsserId.ToString();
                     Session["UserNick"] = usr.Nick.ToString();
                     Session["isTreiner"] = usr.isTrainer.ToString();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {

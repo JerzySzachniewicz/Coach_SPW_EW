@@ -15,8 +15,9 @@ namespace WebApplication2.Models
             Users1 = new HashSet<Users>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int UsserId { get; set; }
 
         [StringLength(20)]
