@@ -59,5 +59,13 @@ namespace WebApplication2.Controllers
             }
             return View();
         }
+
+        public ActionResult LogOff()
+        {
+            Session["UserID"] = null;
+            Session["UserNick"] = null;
+            Session["isTreiner"] = null;
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

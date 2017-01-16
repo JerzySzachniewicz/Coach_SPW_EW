@@ -25,7 +25,7 @@ namespace WebApplication2.Models
 
         public int Coach { get; set; }
 
-        public virtual TrainingType TrainingType { get; set; }
+        public TrainingType TrainingType { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Users> Users { get; set; }
