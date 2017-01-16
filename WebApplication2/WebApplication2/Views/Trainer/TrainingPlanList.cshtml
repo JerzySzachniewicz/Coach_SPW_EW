@@ -3,10 +3,14 @@
 <h2>Training Plans</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create")      
+    @Html.ActionLink("Training type manager", "TrainingTypeList")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PlanId)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.TrainingType.Name)
         </th>
@@ -19,23 +23,29 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Level)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Coach)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PlanId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PlanId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PlanId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlanId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrainingType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Level)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Coach)
+            </td>
+            <td>
+                @if (Session["UserID"].ToString().Equals(item.Coach+""))
+                {
+                    @Html.ActionLink("Edit", "Edit", new {id = item.PlanId}) 
+                    @Html.ActionLink("Delete", "Delete", new {id = item.PlanId})
+                }
+            </td>
+        </tr>
+    }
 
 </table>

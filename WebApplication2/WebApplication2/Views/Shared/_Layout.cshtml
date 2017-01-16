@@ -23,6 +23,7 @@
                     @if (Session["UserID"] != null)
                     {
                         <li>@Html.ActionLink("Excercises", "ExcerciseList", "Trainer")</li>
+                        <li>@Html.ActionLink("Training Plans", "TrainingPlanList", "Trainer")</li>
                     }
                     else
                     {

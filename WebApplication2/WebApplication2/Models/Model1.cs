@@ -22,6 +22,11 @@ namespace WebApplication2.Models
         public virtual DbSet<TrainingType> TrainingType { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
+        public TrainingType GetTrainingTypeBtId(int id)
+        {
+            return Enumerable.FirstOrDefault(TrainingType, tt => tt.TypeId == id);
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Exercise>()

@@ -1,27 +1,26 @@
-﻿
-@model WebApplication2.Models.Exercise
+﻿@model WebApplication2.Models.TrainingType
 
-@{
-    ViewBag.Title = "Create Excercise";
-}
-
-<h2>Create Excercise</h2>
-
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
-        <h4>Exercise</h4>
+        <h4>TrainingType</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -34,5 +33,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "ExcerciseList")
+    @Html.ActionLink("Back to List", "TrainingPlanList")
 </div>
