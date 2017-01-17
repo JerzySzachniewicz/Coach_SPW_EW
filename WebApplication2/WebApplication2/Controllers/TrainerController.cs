@@ -97,26 +97,26 @@ namespace WebApplication2.Controllers
 
         public ActionResult CreatePlan()
         {
-            List<SelectListItem> items = new List<SelectListItem>();
+            PlanTpeViewModel plan = new PlanTpeViewModel();
+            plan.DropDownItems = new List<SelectListItem>();
             using (var dbContext = new Model1())
             {
-               foreach( var tt in dbContext.TrainingType.ToList()) {
-                    items.Add(new SelectListItem {Text = tt.Name, Value = tt.TypeId + "" });
+               foreach ( var tt in dbContext.TrainingType.ToList()) {
+                    plan.DropDownItems.Add(new SelectListItem {Text = tt.Name, Value = tt.TypeId + "" });
                 }
             }
-            ViewBag.TrainingType = items;
-            return View();
+            return View(plan);
         }
 
         [HttpPost]
-        public ActionResult CreatePlan(TrainingPlan tp)
+        public ActionResult CreatePlan(PlanTpeViewModel tp)
         {
             if (ModelState.IsValid)
             {
                 using (var dbContext = new Model1())
                 {
-                    tp.Coach = (int)Session["UserID"];
-                    dbContext.TrainingPlan.Add(tp);
+                    tp.Plan.Coach = Int32.Parse(Session["UserID"].ToString());
+                    dbContext.TrainingPlan.Add(tp.Plan);
                     dbContext.SaveChanges();
                 }
             }

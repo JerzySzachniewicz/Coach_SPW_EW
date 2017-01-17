@@ -201,6 +201,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PlanTpeViewModel.cs" />
     <Compile Include="Models\Exercise.cs" />
     <Compile Include="Models\ExercisesInSession.cs" />
     <Compile Include="Models\Model1.cs" />
