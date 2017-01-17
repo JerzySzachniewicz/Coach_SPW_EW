@@ -265,6 +265,7 @@
     <Content Include="Views\Trainer\CreateExcercise.cshtml" />
     <Content Include="Views\Trainer\TrainingTypeList.cshtml" />
     <Content Include="Views\Trainer\TrainingTypeCreate.cshtml" />
+    <Content Include="Views\Trainer\CreatePlan.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

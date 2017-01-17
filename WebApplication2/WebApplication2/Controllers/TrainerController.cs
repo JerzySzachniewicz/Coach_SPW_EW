@@ -95,6 +95,35 @@ namespace WebApplication2.Controllers
             return RedirectToAction("TrainingPlanList", "Trainer");
         }
 
+        public ActionResult CreatePlan()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            using (var dbContext = new Model1())
+            {
+               foreach( var tt in dbContext.TrainingType.ToList()) {
+                    items.Add(new SelectListItem {Text = tt.Name, Value = tt.TypeId + "" });
+                }
+            }
+            ViewBag.TrainingType = items;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreatePlan(TrainingPlan tp)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var dbContext = new Model1())
+                {
+                    tp.Coach = (int)Session["UserID"];
+                    dbContext.TrainingPlan.Add(tp);
+                    dbContext.SaveChanges();
+                }
+            }
+            ModelState.Clear();
+            return RedirectToAction("TrainingPlanList", "Trainer");
+        }
+
 
     }
 }
