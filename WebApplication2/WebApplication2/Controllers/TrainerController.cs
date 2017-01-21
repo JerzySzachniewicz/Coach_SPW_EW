@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication2.Models;
+using WebApplication2.Models.ViewModels;
 
 namespace WebApplication2.Controllers
 {
@@ -121,7 +122,20 @@ namespace WebApplication2.Controllers
                 }
             }
             ModelState.Clear();
-            return RedirectToAction("TrainingPlanList", "Trainer");
+            return RedirectToAction("EditPlan", "Trainer", new { planId = tp.Plan.PlanId});
+        }
+
+        public ActionResult EditPlan(int planId)
+        {
+            return View(new PlanViewModel(planId));
+        }
+
+        public String ExcerciseName(int exerciseId)
+        {
+            using (var dbContext = new Model1())
+            {
+                return dbContext.Exercise.First(e => e.ExerciseId == exerciseId).Name;
+            }
         }
 
 
