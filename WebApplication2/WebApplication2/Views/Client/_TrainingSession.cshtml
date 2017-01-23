@@ -1,0 +1,18 @@
+﻿@model WebApplication2.Models.ViewModels.SessionInPlanViewModel
+
+
+<table>
+    <tr>
+        <td>ExerciseId</td>
+        <td>Series</td>
+        <td>Repeats</td>
+    </tr>
+    @foreach (var item in Model.ExercisesInSessions)
+    {
+        <tr>
+            <td>@{Html.RenderAction("ExcerciseName", "Trainer", new { exerciseId = item.ExerciseId });} </td>
+            <td>@item.Series</td>
+            <td>@item.Repeats</td>
+        </tr>
+    }
+</table>

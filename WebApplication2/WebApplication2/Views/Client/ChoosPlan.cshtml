@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebApplication2.Models.TrainingPlan>
+
+@{
+    ViewBag.Title = "ChoosPlan";
+}
+
+<h2>ChoosPlan</h2>
+@Html.CheckBox("Auto choos trainer", true, new { onchange = "test()" })
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainingType.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Level)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Coach)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainingType.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Level)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Coach)
+        </td>
+        <td>
+            @Html.ActionLink("Choos", "ChoosPlanNow", new { id=item.PlanId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -44,12 +44,12 @@ namespace WebApplication2.Controllers
         {
             using (var dbContext = new Model1())
             {
-                var usr = dbContext.Users.Where(u => u.Nick == user.Nick && u.Password == user.Password).FirstOrDefault();
+                var usr = dbContext.Users.FirstOrDefault(u => u.Nick == user.Nick && u.Password == user.Password);
                 if (usr != null)
                 {
                     Session["UserID"] = usr.UsserId.ToString();
                     Session["UserNick"] = usr.Nick.ToString();
-                    Session["isTreiner"] = usr.isTrainer.ToString();
+                    Session["isTreiner"] = usr.isTrainer;
                     return RedirectToAction("Index", "Home");
                 }
                 else

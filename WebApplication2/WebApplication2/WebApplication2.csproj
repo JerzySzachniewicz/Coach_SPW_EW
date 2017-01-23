@@ -196,6 +196,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TrainerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -272,6 +273,11 @@
     <Content Include="Views\Trainer\EditPlan.cshtml" />
     <Content Include="Views\Trainer\_TrainingSession.cshtml" />
     <Content Include="Views\Trainer\AddExcerciseToPlan.cshtml" />
+    <Content Include="Views\Client\ResultsList.cshtml" />
+    <Content Include="Views\Client\AddMyInformations.cshtml" />
+    <Content Include="Views\Client\TrainingPlan.cshtml" />
+    <Content Include="Views\Client\_TrainingSession.cshtml" />
+    <Content Include="Views\Client\ChoosPlan.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

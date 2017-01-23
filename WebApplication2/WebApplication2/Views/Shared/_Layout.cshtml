@@ -22,8 +22,17 @@
                 <ul class="nav navbar-nav">
                     @if (Session["UserID"] != null)
                     {
-                        <li>@Html.ActionLink("Excercises", "ExcerciseList", "Trainer")</li>
-                        <li>@Html.ActionLink("Training Plans", "TrainingPlanList", "Trainer")</li>
+                        if ((bool)Session["isTreiner"] == true)
+                        {
+                            <li>@Html.ActionLink("Excercises", "ExcerciseList", "Trainer")</li>
+                            <li>@Html.ActionLink("Training Plans", "TrainingPlanList", "Trainer")</li>
+                            <li>@((bool)Session["isTreiner"])</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("My Results", "ResultsList", "Client")</li>
+                            <li>@Html.ActionLink("My Training Plan", "TrainingPlan", "Client")</li>
+                        }
                     }
                     else
                     {
