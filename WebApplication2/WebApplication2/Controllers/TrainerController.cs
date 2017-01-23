@@ -138,6 +138,53 @@ namespace WebApplication2.Controllers
             }
         }
 
+        public ActionResult AddExcerciseToPlan(int id)
+        {
+            Session["planID"] = id;
+            return View(new CreatePlanViewModel(id));
+        }
+
+        [HttpPost]
+        public ActionResult AddExcerciseToPlan(CreatePlanViewModel cpVM)
+        {
+            cpVM.plan = int.Parse(Session["planID"].ToString());
+            if (ModelState.IsValid)
+            {
+                using (var dbContext = new Model1())
+                {
+                    var sessions = dbContext.TrainingSessionsInPlan.Where(s => s.PlanId == cpVM.plan).ToList();
+                    if (sessions.Count() != 0)
+                    {
+
+
+                        foreach (var session in sessions)
+                        {
+                            var tSession = dbContext.TrainingSession.FirstOrDefault(s => s.DayOfTraining == cpVM.day && s.SessionId == session.SessionId);
+                            if (tSession != null)
+                            {
+                                cpVM.exercisesInSession.SessionId = tSession.SessionId;
+                            }                            
+                        }
+                    }
+                    else
+                    {
+                        var newTrainingSession = new TrainingSession();
+                        newTrainingSession.SessionId = cpVM.exercisesInSession.ExerciseId;
+                        newTrainingSession.DayOfTraining = cpVM.day;
+                        cpVM.exercisesInSession.SessionId = newTrainingSession.SessionId;
+                        var newSessionInPlan = new TrainingSessionsInPlan();
+                        newSessionInPlan.SessionId = newTrainingSession.SessionId;
+                        newSessionInPlan.PlanId = cpVM.plan;
+                        dbContext.TrainingSessionsInPlan.Add(newSessionInPlan);
+                        dbContext.TrainingSession.Add(newTrainingSession);
+                    }
+
+                        dbContext.ExercisesInSession.Add(cpVM.exercisesInSession);
+                    dbContext.SaveChanges();
+                }
+            }
+            return RedirectToAction("EditPlan", "Trainer", new { planId = cpVM.plan });
+        }
 
     }
 }

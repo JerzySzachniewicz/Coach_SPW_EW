@@ -7,14 +7,16 @@ namespace WebApplication2.Models.ViewModels
 {
     public class PlanViewModel
     {
+        public int IdPlanu;
         public IEnumerable<TrainingSessionsInPlan> TrainingSessionsInPlans;
         public SessionInPlanViewModel[] TrainingSessions = new SessionInPlanViewModel[7];
 
         public PlanViewModel(int planId)
         {
+            IdPlanu = planId;
             using (var db = new Model1())
             {
-                TrainingSessionsInPlans = db.TrainingSessionsInPlan.Where(t => t.PlanId == planId);
+                TrainingSessionsInPlans = db.TrainingSessionsInPlan.Where(t => t.PlanId == planId).ToList();
                 foreach (var myTrainingSession in TrainingSessionsInPlans)
                 {
                     var temp = new SessionInPlanViewModel(myTrainingSession.SessionId);

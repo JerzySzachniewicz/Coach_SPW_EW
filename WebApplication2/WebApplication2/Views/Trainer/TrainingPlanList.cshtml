@@ -41,8 +41,7 @@
             <td>
                 @if (Session["UserID"].ToString().Equals(item.Coach+""))
                 {
-                    @Html.ActionLink("Edit", "EditPlan", new { planId = item.PlanId}) 
-                    @Html.ActionLink("Delete", "Delete", new { planId = item.PlanId})
+                    @Html.ActionLink("Edit", "EditPlan", new { planId = item.PlanId})                     
                 }
             </td>
         </tr>
