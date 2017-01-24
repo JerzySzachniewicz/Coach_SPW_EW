@@ -25,8 +25,7 @@
                         if ((bool)Session["isTreiner"] == true)
                         {
                             <li>@Html.ActionLink("Excercises", "ExcerciseList", "Trainer")</li>
-                            <li>@Html.ActionLink("Training Plans", "TrainingPlanList", "Trainer")</li>
-                            <li>@((bool)Session["isTreiner"])</li>
+                            <li>@Html.ActionLink("Training Plans", "TrainingPlanList", "Trainer")</li>                            
                         }
                         else
                         {

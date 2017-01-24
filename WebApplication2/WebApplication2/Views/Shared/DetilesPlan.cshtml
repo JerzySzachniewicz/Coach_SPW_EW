@@ -1,0 +1,46 @@
+﻿@using WebApplication2.Models.ViewModels
+@model WebApplication2.Models.ViewModels.PlanViewModel
+
+@{
+    ViewBag.Title = "Excercise List";
+}
+
+<h2>Edit plan</h2>
+
+<table>
+    <tr>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+        <th>Sunday</th>
+    </tr>
+    <tr>
+        @foreach (var item in Model.TrainingSessions)
+        {
+            <td>
+                @if (item != null)
+                {
+                    @Html.Partial("_TrainingSession", item)
+                }
+                else
+                {
+                    <p>Nothing in this day</p>
+                }
+            </td>
+        }
+    </tr>
+</table>
+<div>
+    @if ((bool)Session["isTreiner"] == true)
+    {
+        @Html.ActionLink("Back to List", "TrainingPlanList","Trainer")
+    }
+    else
+    {
+        @Html.ActionLink("Back to List", "TrainingPlan", "Client")
+    }
+    
+</div>

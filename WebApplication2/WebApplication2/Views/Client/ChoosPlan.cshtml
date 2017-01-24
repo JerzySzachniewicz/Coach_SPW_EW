@@ -4,8 +4,8 @@
     ViewBag.Title = "ChoosPlan";
 }
 
-<h2>ChoosPlan</h2>
-@Html.CheckBox("Auto choos trainer", true, new { onchange = "test()" })
+<h2>Choos Plan</h2>
+
 <table class="table">
     <tr>
         <th>
@@ -32,6 +32,7 @@
             @Html.DisplayFor(modelItem => item.Coach)
         </td>
         <td>
+            @Html.ActionLink("View", "DetilesPlan", "Shared", new { id = item.PlanId }, "DFQ") |             
             @Html.ActionLink("Choos", "ChoosPlanNow", new { id=item.PlanId })
         </td>
     </tr>

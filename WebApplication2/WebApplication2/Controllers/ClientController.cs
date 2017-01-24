@@ -56,12 +56,7 @@ namespace WebApplication2.Controllers
             }
         }
 
-        private bool ifMe = false;
-
-        public void test()
-        {
-            ifMe = !ifMe;
-        }
+        
         public ActionResult ChoosPlan()
         {
             IEnumerable<TrainingPlan> myList;
@@ -87,12 +82,58 @@ namespace WebApplication2.Controllers
             {
                 var playerId = int.Parse(Session["UserID"].ToString());
                 var myUser = db.Users.First(u => u.UsserId == playerId);
-                myUser.TrainingPlan = id;
-                if (ifMe)
-                    myUser.Coach = 6666;
+                myUser.TrainingPlan = id;               
                 db.SaveChanges();
             }
             return RedirectToAction("TrainingPlan", "Client");
+        }
+
+        public ActionResult UnSelectPlan()
+        {
+            using (var db = new Model1())
+            {
+                var playerId = int.Parse(Session["UserID"].ToString());
+                var myUser = db.Users.First(u => u.UsserId == playerId);
+                myUser.TrainingPlan = null;                
+                db.SaveChanges();
+            }
+            return RedirectToAction("ChoosPlan", "Client");
+        }
+
+        public ActionResult Trainer()
+        {
+            using (var db = new Model1())
+            {
+                var playerId = int.Parse(Session["UserID"].ToString());
+                var myUser = db.Users.First(u => u.UsserId == playerId);
+                if(myUser.Coach == null)
+                {
+                    return RedirectToAction("ChoosTrainer", "Client");
+                }
+            }
+            return View();
+        }
+
+        public ActionResult ChoosTrainer()
+        {
+            using (var db = new Model1())
+            {
+                var playerId = int.Parse(Session["UserID"].ToString());
+                var myUser = db.Users.First(u => u.UsserId == playerId);
+                return View(new ChoosTrainerViewModel(myUser.TrainingPlan));
+            }
+        }
+
+        public ActionResult ChoosTrainerNow(int id)
+        {
+            using (var db = new Model1())
+            {
+                var playerId = int.Parse(Session["UserID"].ToString());
+                var myUser = db.Users.First(u => u.UsserId == playerId);
+                myUser.Coach = id;
+                db.SaveChanges();              
+            }
+            return RedirectToAction("Trainer", "Client");
         }
     }
 }

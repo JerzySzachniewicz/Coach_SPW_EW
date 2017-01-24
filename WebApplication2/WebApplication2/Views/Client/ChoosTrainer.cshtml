@@ -1,0 +1,47 @@
+﻿@model WebApplication2.Models.ViewModels.ChoosTrainerViewModel
+
+@{
+    ViewBag.Title = "ChoosTrainer";
+}
+
+<h2>Choos Trainer</h2>
+@if(Model.recomendedTrainer == null)
+{
+    <div>
+        We recomend You to choos training plan first: 
+        @Html.ActionLink("Choose Plan", "ChoosPlan");
+    </div>
+}
+else
+{
+    <div>
+        We recomend You to choos trainer witch creates Your training plan:
+        @Model.recomendedTrainer.Nick 
+        @Html.ActionLink("Choose Him", "ChoosTrainerNow", new { id = Model.recomendedTrainer.UsserId});
+    </div>
+}
+<table>
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Nick
+        </th>
+    </tr>
+    @foreach (var item in Model.trainers)
+    {
+        <tr>
+            <td>
+                @item.UsserId
+            </td>
+            <td>
+                @item.Nick
+            </td>
+            <td>
+                @Html.ActionLink("Choose Him", "ChoosTrainerNow", new { id = item.UsserId});
+            </td>
+        </tr>
+    }
+</table>
+

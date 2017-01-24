@@ -39,9 +39,10 @@
                 @Html.DisplayFor(modelItem => item.Coach)
             </td>
             <td>
+                @Html.ActionLink("View", "DetilesPlan", "Shared", new { id = item.PlanId }, "DFQ") | 
                 @if (Session["UserID"].ToString().Equals(item.Coach+""))
                 {
-                    @Html.ActionLink("Edit", "EditPlan", new { planId = item.PlanId})                     
+                   @Html.ActionLink("Edit", "EditPlan", new { planId = item.PlanId}, "DFQ")                     
                 }
             </td>
         </tr>
