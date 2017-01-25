@@ -21,5 +21,7 @@ namespace WebApplication2.Models
         public DateTime? Date { get; set; }
 
         public int? Setisfaction { get; set; }
+
+        public string MoreInfo { get; set; }
     }
 }

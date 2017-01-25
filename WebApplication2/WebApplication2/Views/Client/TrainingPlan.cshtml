@@ -30,3 +30,13 @@
         }
     </tr>
 </table>
+<button id="create">Add result</button>
+<div id="someDiv">
+</div>
+<script>
+    document.getElementById("create").onclick = function () { myFunction() };
+    function myFunction() {
+        $("#someDiv").load('@Url.Action("AddTrainingResult", "Client")');
+        $('#create').hide();
+    }
+</script>

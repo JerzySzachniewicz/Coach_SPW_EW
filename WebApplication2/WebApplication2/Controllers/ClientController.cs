@@ -135,5 +135,26 @@ namespace WebApplication2.Controllers
             }
             return RedirectToAction("Trainer", "Client");
         }
+
+        public ActionResult AddTrainingResult()
+        {
+            return View(new AddResult(int.Parse(Session["UserID"].ToString())));
+        }
+
+        [HttpPost]
+        public ActionResult AddTrainingResult(AddResult AddResult)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var db = new Model1())
+                {
+                    AddResult.result.UserId = int.Parse(Session["UserID"].ToString());
+                    db.TrainingResult.Add(AddResult.result);
+                    db.SaveChanges();
+                }
+                return RedirectToAction("TrainingPlan", "Client");
+            }
+            return RedirectToAction("dsadadwwa", "Client");
+        }
     }
 }
