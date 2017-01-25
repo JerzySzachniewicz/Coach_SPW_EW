@@ -15,12 +15,7 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-
-        public ActionResult ResultsList()
-        {
-            return View();
-        }
-
+        
         public ActionResult AddMyInformations()
         {
             return View();
@@ -144,7 +139,7 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult AddTrainingResult(AddResult AddResult)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 using (var db = new Model1())
                 {
@@ -152,9 +147,8 @@ namespace WebApplication2.Controllers
                     db.TrainingResult.Add(AddResult.result);
                     db.SaveChanges();
                 }
-                return RedirectToAction("TrainingPlan", "Client");
             }
-            return RedirectToAction("dsadadwwa", "Client");
+            return RedirectToAction("TrainingPlan", "Client");
         }
     }
 }

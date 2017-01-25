@@ -93,7 +93,7 @@ namespace WebApplication2.Controllers
                 }
             }
             ModelState.Clear();
-            return RedirectToAction("TrainingPlanList", "Trainer");
+            return RedirectToAction("TrainingTypeList", "Trainer");
         }
 
         public ActionResult CreatePlan()
@@ -184,6 +184,17 @@ namespace WebApplication2.Controllers
                 }
             }
             return RedirectToAction("EditPlan", "Trainer", new { planId = cpVM.plan });
+        }
+
+        public ActionResult ClientsList()
+        {
+            IEnumerable<Users> list;
+            using (var db = new Model1())
+            {
+                var id = int.Parse(Session["UserID"].ToString());
+                list = db.Users.Where(u => u.Coach == id).ToList();
+            }
+            return View(list);
         }
 
     }

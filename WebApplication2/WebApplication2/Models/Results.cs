@@ -29,5 +29,8 @@ namespace WebApplication2.Models
         public double? ThighCircumference { get; set; }
 
         public virtual Users Users { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime Date { get; set; }
     }
 }

@@ -203,6 +203,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Messages.cs" />
     <Compile Include="Models\PlanTpeViewModel.cs" />
     <Compile Include="Models\Exercise.cs" />
     <Compile Include="Models\ExercisesInSession.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="Models\ViewModels\ChoosTrainerViewModel.cs" />
     <Compile Include="Models\ViewModels\CreatePlanViewModel.cs" />
     <Compile Include="Models\ViewModels\PlanViewModel.cs" />
+    <Compile Include="Models\ViewModels\ResultsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -276,7 +278,7 @@
     <Content Include="Views\Trainer\EditPlan.cshtml" />
     <Content Include="Views\Trainer\_TrainingSession.cshtml" />
     <Content Include="Views\Trainer\AddExcerciseToPlan.cshtml" />
-    <Content Include="Views\Client\ResultsList.cshtml" />
+    <Content Include="Views\Shared\ResultsList.cshtml" />
     <Content Include="Views\Client\AddMyInformations.cshtml" />
     <Content Include="Views\Client\TrainingPlan.cshtml" />
     <Content Include="Views\Client\_TrainingSession.cshtml" />
@@ -286,6 +288,8 @@
     <Content Include="Views\Client\Trainer.cshtml" />
     <Content Include="Views\Client\ChoosTrainer.cshtml" />
     <Content Include="Views\Client\AddTrainingResult.cshtml" />
+    <Content Include="Views\Trainer\ClientsList.cshtml" />
+    <Content Include="Views\Shared\Messanger.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

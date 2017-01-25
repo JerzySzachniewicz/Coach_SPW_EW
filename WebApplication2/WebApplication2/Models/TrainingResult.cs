@@ -17,11 +17,12 @@ namespace WebApplication2.Models
 
         public int? SessionId { get; set; }
 
-        [Column(TypeName = "date")]
+        [DataType(DataType.Date)]
         public DateTime? Date { get; set; }
 
         public int? Setisfaction { get; set; }
 
+        [StringLength(255)]
         public string MoreInfo { get; set; }
     }
 }

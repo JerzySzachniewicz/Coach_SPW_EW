@@ -14,6 +14,7 @@ namespace WebApplication2.Models
 
         public virtual DbSet<Exercise> Exercise { get; set; }
         public virtual DbSet<ExercisesInSession> ExercisesInSession { get; set; }
+        public virtual DbSet<Messages> Messages { get; set; }
         public virtual DbSet<Results> Results { get; set; }
         public virtual DbSet<TrainingPlan> TrainingPlan { get; set; }
         public virtual DbSet<TrainingResult> TrainingResult { get; set; }
@@ -35,6 +36,10 @@ namespace WebApplication2.Models
 
             modelBuilder.Entity<ExercisesInSession>()
                 .Property(e => e.Description)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Messages>()
+                .Property(e => e.Text)
                 .IsUnicode(false);
 
             modelBuilder.Entity<TrainingPlan>()

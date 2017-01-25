@@ -25,12 +25,14 @@
                         if ((bool)Session["isTreiner"] == true)
                         {
                             <li>@Html.ActionLink("Excercises", "ExcerciseList", "Trainer")</li>
-                            <li>@Html.ActionLink("Training Plans", "TrainingPlanList", "Trainer")</li>                            
+                            <li>@Html.ActionLink("Training Plans", "TrainingPlanList", "Trainer")</li>
+                            <li>@Html.ActionLink("Clients", "ClientsList", "Trainer")</li>
                         }
                         else
                         {
-                            <li>@Html.ActionLink("My Results", "ResultsList", "Client")</li>
+                            <li>@Html.ActionLink("My Results", "ResultsList", "Shared", new { id = int.Parse(Session["UserID"].ToString()) },"")</li>
                             <li>@Html.ActionLink("My Training Plan", "TrainingPlan", "Client")</li>
+                            <li>@Html.ActionLink("My Trainer", "Trainer", "Client")</li>
                         }
                     }
                     else
