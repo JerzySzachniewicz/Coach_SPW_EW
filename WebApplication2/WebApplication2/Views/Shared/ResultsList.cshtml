@@ -1,0 +1,114 @@
+﻿@model WebApplication2.Models.ViewModels.ResultsViewModel
+@if ((bool) Session["isTreiner"])
+{
+    <br/>
+    <p>Results of @Model.user.Nick</p>
+}
+else 
+{
+    <div>
+        <br/>
+        @Html.ActionLink("Add my informations", "AddMyInformations", "Client") |
+        @Html.ActionLink("Add my training informations", "TrainingPlan", "Client")
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            Height
+        </th>
+        <th>
+            Weights
+        </th>
+        <th>
+            BodyFat
+        </th>
+        <th>
+            ChestCircumference
+        </th>
+        <th>
+            BicepsCircumference
+        </th>
+        <th>
+            Waist
+        </th>
+        <th>
+            ThighCircumference
+        </th>
+        <th>
+            Date
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Results)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weights)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BodyFat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChestCircumference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BicepsCircumference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Waist)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThighCircumference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+        </tr>
+    }
+</table>
+<table class="table">
+    <tr>
+        <th>
+            SessionId
+        </th>
+        <th>
+            MoreInfo
+        </th>
+        <th>
+            Setisfaction
+        </th>
+        <th>
+            Date
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.TrainingResultsResult)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SessionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Setisfaction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoreInfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+
+        </tr>
+    }
+
+</table>
+@if ((bool)Session["isTreiner"])
+{
+    @Html.ActionLink("Back to list", "ClientsList", "Trainer")
+}

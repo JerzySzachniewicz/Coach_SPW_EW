@@ -14,5 +14,7 @@ namespace WebApplication2.Models
 
         [StringLength(50)]
         public string Name { get; set; }
+
+        public int Type { get; set; }
     }
 }
