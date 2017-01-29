@@ -218,6 +218,7 @@
     <Compile Include="Models\ViewModels\AddResult.cs" />
     <Compile Include="Models\ViewModels\ChoosTrainerViewModel.cs" />
     <Compile Include="Models\ViewModels\CreatePlanViewModel.cs" />
+    <Compile Include="Models\ViewModels\MessangerViewModel.cs" />
     <Compile Include="Models\ViewModels\PlanViewModel.cs" />
     <Compile Include="Models\ViewModels\ResultsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -290,6 +291,7 @@
     <Content Include="Views\Client\AddTrainingResult.cshtml" />
     <Content Include="Views\Trainer\ClientsList.cshtml" />
     <Content Include="Views\Shared\Messanger.cshtml" />
+    <Content Include="Views\Shared\SendMessage.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

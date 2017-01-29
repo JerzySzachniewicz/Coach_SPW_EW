@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,15 +22,32 @@ namespace WebApplication2.Controllers
         {
             return View(new ResultsViewModel(id));
         }
-
-        public ActionResult Messanger()
+        
+        public ActionResult Messanger(int id2 )
         {
-            IEnumerable<Messages> list;
+            Session["Reciver"] = id2;
+            var model = new MessangerViewModel(int.Parse(Session["UserID"].ToString()), id2);
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Messanger(MessangerViewModel ms)
+        {
             using (var db = new Model1())
             {
-                list = db.Messages.ToList();
+                var id = int.Parse(Session["UserID"].ToString());
+                ms.NewMessage.SenderId = id;
+                ms.NewMessage.ReciverId = int.Parse(Session["Reciver"].ToString());
+                ms.NewMessage.IsRead = false;
+                ms.NewMessage.MessageId = Messages.GenerateId();
+                ms.NewMessage.Date = DateTime.Now;
+                db.Messages.Add(ms.NewMessage);
+                db.SaveChanges();
+
             }
-            return View(list);
+            return RedirectToAction("Messanger", new {id2 = int.Parse(Session["Reciver"].ToString()) });
         }
+        
     }
 }

@@ -29,7 +29,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PlanId)
             </td>
-            <td>
+            <td title="@item.TrainingType.Description">
                 @Html.DisplayFor(modelItem => item.TrainingType.Name)
             </td>
             <td>

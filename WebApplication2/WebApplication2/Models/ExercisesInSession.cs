@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace WebApplication2.Models
 {
     using System;
@@ -25,5 +27,6 @@ namespace WebApplication2.Models
 
         [StringLength(255)]
         public string Description { get; set; }
+
     }
 }

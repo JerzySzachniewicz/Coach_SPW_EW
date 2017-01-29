@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace WebApplication2.Models
 {
     using System;
@@ -32,5 +34,23 @@ namespace WebApplication2.Models
 
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
+
+        private static int _baseId = 0;
+        public static int GenerateId()
+        {
+            var id = _baseId;
+            using (var db = new Model1())
+            {
+                while (true)
+                {
+                    if (db.Results.FirstOrDefault(m => m.ResultId == id) == null)
+                    {
+                        _baseId = id;
+                        return id;
+                    }
+                    id++;
+                }
+            }
+        }
     }
 }

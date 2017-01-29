@@ -22,7 +22,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td title="@item.TrainingType.Name">
             @Html.DisplayFor(modelItem => item.TrainingType.Name)
         </td>
         <td>

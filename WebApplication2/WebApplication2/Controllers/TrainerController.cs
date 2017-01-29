@@ -28,6 +28,7 @@ namespace WebApplication2.Controllers
             {
                 using (var dbContext = new Model1())
                 {
+                    ex.ExerciseId = Exercise.GenerateId();
                     dbContext.Exercise.Add(ex);
                     dbContext.SaveChanges();
                 }
@@ -88,6 +89,7 @@ namespace WebApplication2.Controllers
             {
                 using (var dbContext = new Model1())
                 {
+                    tt.TypeId = TrainingType.GenerateId();
                     dbContext.TrainingType.Add(tt);
                     dbContext.SaveChanges();
                 }
@@ -116,6 +118,7 @@ namespace WebApplication2.Controllers
             {
                 using (var dbContext = new Model1())
                 {
+                    tp.Plan.PlanId = TrainingPlan.GenerateId();
                     tp.Plan.Coach = Int32.Parse(Session["UserID"].ToString());
                     dbContext.TrainingPlan.Add(tp.Plan);
                     dbContext.SaveChanges();
@@ -130,7 +133,7 @@ namespace WebApplication2.Controllers
             return View(new PlanViewModel(planId));
         }
 
-        public String ExcerciseName(int exerciseId)
+        public string ExcerciseName(int exerciseId)
         {
             using (var dbContext = new Model1())
             {
@@ -168,18 +171,22 @@ namespace WebApplication2.Controllers
                     }
                     else
                     {
-                        var newTrainingSession = new TrainingSession();
-                        newTrainingSession.SessionId = cpVM.exercisesInSession.ExerciseId;
-                        newTrainingSession.DayOfTraining = cpVM.day;
+                        var newTrainingSession = new TrainingSession
+                        {
+                            SessionId = TrainingSession.GenerateId(),
+                            DayOfTraining = cpVM.day
+                        };
                         cpVM.exercisesInSession.SessionId = newTrainingSession.SessionId;
-                        var newSessionInPlan = new TrainingSessionsInPlan();
-                        newSessionInPlan.SessionId = newTrainingSession.SessionId;
-                        newSessionInPlan.PlanId = cpVM.plan;
+                        var newSessionInPlan = new TrainingSessionsInPlan
+                        {
+                            SessionId = newTrainingSession.SessionId,
+                            PlanId = cpVM.plan
+                        };
                         dbContext.TrainingSessionsInPlan.Add(newSessionInPlan);
                         dbContext.TrainingSession.Add(newTrainingSession);
                     }
 
-                        dbContext.ExercisesInSession.Add(cpVM.exercisesInSession);
+                    dbContext.ExercisesInSession.Add(cpVM.exercisesInSession);
                     dbContext.SaveChanges();
                 }
             }
@@ -195,6 +202,14 @@ namespace WebApplication2.Controllers
                 list = db.Users.Where(u => u.Coach == id).ToList();
             }
             return View(list);
+        }
+
+        public string ExcerciseDescription(int sessionId, int exerciseId)
+        {
+            using (var db = new Model1())
+            {
+                return db.ExercisesInSession.First(m => m.SessionId == sessionId && m.ExerciseId == exerciseId).Description;
+            }
         }
 
     }

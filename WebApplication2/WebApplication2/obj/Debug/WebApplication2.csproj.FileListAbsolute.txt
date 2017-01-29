@@ -77,7 +77,6 @@ C:\Users\Troskliwy Mis\Source\Repos\Coach_SPW_EW\WebApplication2\WebApplication2
 C:\Users\Troskliwy Mis\Source\Repos\Coach_SPW_EW\WebApplication2\WebApplication2\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Troskliwy Mis\Source\Repos\Coach_SPW_EW\WebApplication2\WebApplication2\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Troskliwy Mis\Source\Repos\Coach_SPW_EW\WebApplication2\WebApplication2\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Troskliwy Mis\Source\Repos\Coach_SPW_EW\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
 C:\Users\Troskliwy Mis\Source\Repos\Coach_SPW_EW\WebApplication2\WebApplication2\obj\Debug\WebApplication2.dll
 C:\Users\Troskliwy Mis\Source\Repos\Coach_SPW_EW\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb
 C:\Users\Jurek\Source\Repos\Coach_SPW_EW\WebApplication2\WebApplication2\bin\ApplicationInsights.config

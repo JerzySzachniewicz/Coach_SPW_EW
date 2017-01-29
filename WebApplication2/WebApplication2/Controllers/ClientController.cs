@@ -28,6 +28,7 @@ namespace WebApplication2.Controllers
             {
                 using (var db = new Model1())
                 {
+                    result.ResultId = Results.GenerateId();
                     result.Users_Id = int.Parse(Session["UserID"].ToString());
                     db.Results.Add(result);
                     db.SaveChanges();
@@ -41,8 +42,8 @@ namespace WebApplication2.Controllers
 
             using (var db = new Model1())
             {
-                var playerID = int.Parse(Session["UserID"].ToString());
-                var myUser = db.Users.First(u => u.UsserId == playerID);
+                var playerId = int.Parse(Session["UserID"].ToString());
+                var myUser = db.Users.First(u => u.UsserId == playerId);
                 if (myUser.TrainingPlan == null)
                 {
                     return RedirectToAction("ChoosPlan", "Client");
@@ -105,8 +106,8 @@ namespace WebApplication2.Controllers
                 {
                     return RedirectToAction("ChoosTrainer", "Client");
                 }
+                return RedirectToAction("Messanger", "Shared", new { id2 = myUser.Coach });
             }
-            return View();
         }
 
         public ActionResult ChoosTrainer()
@@ -143,6 +144,7 @@ namespace WebApplication2.Controllers
             {
                 using (var db = new Model1())
                 {
+                    AddResult.result.ResultId = TrainingResult.GenerateId();
                     AddResult.result.UserId = int.Parse(Session["UserID"].ToString());
                     db.TrainingResult.Add(AddResult.result);
                     db.SaveChanges();

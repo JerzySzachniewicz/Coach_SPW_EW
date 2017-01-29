@@ -29,7 +29,8 @@
             @Html.DisplayFor(modelItem => item.DateOfBirth)
         </td>
         <td>
-            @Html.ActionLink("Details", "ResultsList","Shared" ,new {id = item.UsserId}, "") |
+            @Html.ActionLink("Details", "ResultsList", "Shared", new {id = item.UsserId}, "") |
+            @Html.ActionLink("Messenger", "Messanger", "Shared", new { id2 = item.UsserId }, "")
         </td>
     </tr>
 }

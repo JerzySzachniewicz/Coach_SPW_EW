@@ -32,7 +32,7 @@ namespace WebApplication2.Models
             {
                 while (true)
                 {
-                    if (db.Messages.First(m => m.MessageId == id) == null)
+                    if (db.Messages.FirstOrDefault(m => m.MessageId == id) == null)
                     {
                         _baseId = id;
                         return id;

@@ -1,18 +1,21 @@
-﻿@model WebApplication2.Models.ViewModels.SessionInPlanViewModel
+﻿@using WebApplication2.Models
+@model WebApplication2.Models.ViewModels.SessionInPlanViewModel
 
 
-<table>
+<table class="table table-bordered">
     <tr>
-        <td>ExerciseId</td>
+        <td>Exercise</td>
         <td>Series</td>
-        <td>Repeats</td>
+        <td>Repeats</td>,
+        <td>Description</td>
     </tr>
     @foreach (var item in Model.ExercisesInSessions)
     {
         <tr>
-            <td>@{Html.RenderAction("ExcerciseName", "Trainer", new { exerciseId = item.ExerciseId });} </td>
+            <td>@{Html.RenderAction("ExcerciseName", "Trainer", new {exerciseId = item.ExerciseId});}</td>
             <td>@item.Series</td>
             <td>@item.Repeats</td>
+            <td>@{Html.RenderAction("ExcerciseDescription", "Trainer", new { sessionId = item.SessionId, exerciseId = item.ExerciseId });}</td>
         </tr>
     }
 </table>

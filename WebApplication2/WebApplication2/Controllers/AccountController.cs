@@ -24,6 +24,7 @@ namespace WebApplication2.Controllers
             {
                 using (var dbContext = new Model1())
                 {
+                    userAccount.UsserId = Users.GenerateId();
                     dbContext.Users.Add(userAccount);
                     userAccount.isTrainer = false;
                     dbContext.SaveChanges();
