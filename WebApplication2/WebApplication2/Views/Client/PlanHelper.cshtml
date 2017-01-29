@@ -1,0 +1,40 @@
+﻿@model WebApplication2.Models.ViewModels.PlanHelperViewModel
+@{
+    ViewBag.Title = "PlanHelper";
+}
+
+<h2>Plan Helper</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Level
+        </th>
+        <th>
+           Coach
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Plans)
+    {
+        <tr>
+            <td title="@item.TrainingType.Description">
+                @Html.DisplayFor(modelItem => item.TrainingType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Level)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Coach)
+            </td>
+            <td>
+                @Html.ActionLink("Choos", "ChoosPlanNow", new { id = item.PlanId })
+            </td>
+        </tr>
+    }
+
+</table>

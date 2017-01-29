@@ -155,6 +155,7 @@ namespace WebApplication2.Controllers
             {
                 using (var dbContext = new Model1())
                 {
+                    cpVM.exercisesInSession.ExercisesInSessionId = ExercisesInSession.GenerateId();
                     var sessions = dbContext.TrainingSessionsInPlan.Where(s => s.PlanId == cpVM.plan).ToList();
                     if (sessions.Count() != 0)
                     {

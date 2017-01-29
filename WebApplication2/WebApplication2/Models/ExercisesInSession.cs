@@ -12,13 +12,11 @@ namespace WebApplication2.Models
     public partial class ExercisesInSession
     {
         [Key]
-        [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int SessionId { get; set; }
+        public int ExercisesInSessionId { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int SessionId { get; set; }
+        
         public int ExerciseId { get; set; }
 
         public int? Series { get; set; }
@@ -28,5 +26,22 @@ namespace WebApplication2.Models
         [StringLength(255)]
         public string Description { get; set; }
 
+        private static int _baseId = 0;
+        public static int GenerateId()
+        {
+            var id = _baseId;
+            using (var db = new Model1())
+            {
+                while (true)
+                {
+                    if (db.ExercisesInSession.FirstOrDefault(m => m.ExercisesInSessionId == id) == null)
+                    {
+                        _baseId = id;
+                        return id;
+                    }
+                    id++;
+                }
+            }
+        }
     }
 }

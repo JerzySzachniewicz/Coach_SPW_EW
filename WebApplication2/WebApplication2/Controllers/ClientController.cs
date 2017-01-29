@@ -152,5 +152,24 @@ namespace WebApplication2.Controllers
             }
             return RedirectToAction("TrainingPlan", "Client");
         }
+
+        public ActionResult PlanHelper()
+        {
+            using (var db = new Model1())
+            {
+                var playerId = int.Parse(Session["UserID"].ToString());
+                var result = db.Results.FirstOrDefault(r => r.Users_Id == playerId);
+                if (result == null)
+                {
+                    return RedirectToAction("NoResult", "Client");
+                }
+                return View(new PlanHelperViewModel(result));
+            }
+        }
+
+        public ActionResult NoResult()
+        {
+            return View();
+        }
     }
 }

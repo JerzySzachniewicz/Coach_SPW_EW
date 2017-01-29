@@ -161,3 +161,4 @@ C:\Users\Jurek\Source\Repos\Coach_SPW_EW\WebApplication2\WebApplication2\bin\Mic
 C:\Users\Jurek\Source\Repos\Coach_SPW_EW\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
 C:\Users\Jurek\Source\Repos\Coach_SPW_EW\WebApplication2\WebApplication2\obj\Debug\WebApplication2.dll
 C:\Users\Jurek\Source\Repos\Coach_SPW_EW\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb
+C:\Users\Troskliwy Mis\Source\Repos\Coach_SPW_EW\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
