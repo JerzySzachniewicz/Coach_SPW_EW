@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "NoResult";
+}
+
+<h2>No Result</h2>
+<div>
+    Yo have not addet Your results, so we can't help you choos plan, You can add results now!
+    @Html.ActionLink("My Results", "ResultsList", "Shared", new { id = int.Parse(Session["UserID"].ToString()) }, "")
+     or go back 
+    @Html.ActionLink("Back to List", "ChoosPlan", "Client")
+</div>
+
